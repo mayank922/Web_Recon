@@ -1,5 +1,7 @@
 import mechanize
 import requests
+import cookiejar
+
 
 def user_agent_spoof(url):
     browser = mechanize.Browser()
@@ -22,6 +24,11 @@ def proxy(url):
     proxies = {"https": "http://61.162.225.180:9091/" , 'http' : "http://61.162.225.180:9091/" }
     r=requests.get( url2, proxies=proxies)
     print(r.text)
+
+
+def cookie_meth()
+    browser = mechanize.Browser()
+    cookie_jar =cookiejar.CookieJar()
 
 if __name__ == '__main__':
     url = "https://www.whatismybrowser.com/detect/what-is-my-user-agent/" # agent string 
