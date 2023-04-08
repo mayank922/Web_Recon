@@ -1,6 +1,6 @@
 import mechanize
 import requests
-import cookiejar
+import http.cookiejar
 
 
 def user_agent_spoof(url):
@@ -17,7 +17,6 @@ def user_agent_spoof(url):
             break
     else:
         print("no there")
-        print("Test code")
 
 
 
@@ -27,13 +26,23 @@ def proxy(url):
     print(r.text)
 
 
-def cookie_meth()
+def cookie_meth():
+    url = 'http://www.syngress.com/'
     browser = mechanize.Browser()
-    cookie_jar =cookiejar.CookieJar()
+    browser.set_handle_robots(False)
+    browser.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
+    
+    cookie_jar =http.cookiejar.LWPCookieJar()
+    print(cookie_jar)
+    browser.set_cookiejar(cookie_jar)
+    page = browser.open(url)
+    for i in cookie_jar:
+        print(i)
 
 if __name__ == '__main__':
     url = "https://www.whatismybrowser.com/detect/what-is-my-user-agent/" # agent string 
     url2 ="http://httpbin.org/ip" # IP
     user_agent_spoof(url)
     proxy(url2)
+    cookie_meth()
 
