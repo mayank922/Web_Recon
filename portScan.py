@@ -1,5 +1,6 @@
 import socket
 import nmap
+from nmap import PortScanner
 
 
 # Define target website
@@ -17,7 +18,8 @@ print("Domain name:", domain_name)
 nm = nmap.PortScanner()
 
 # Scan for open ports on the website
-nm.scan(target_website, arguments='-p-')
+nm.scan(target_website, arguments='-p 80, -sV')
+#print(nm.scan)
 
 # Print out the list of open ports
 open_ports = []
