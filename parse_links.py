@@ -28,6 +28,6 @@ def p_links(url):
 
 
 
-url = 'https://www.kittenwar.com/'
+url = 'https://seedsecuritylabs.org/'
 p_links(url)
 
