@@ -2,9 +2,10 @@ import requests
 from googlesearch import search
 import parse
 from bs4 import BeautifulSoup
+import re
 
 results =[]
-query = " baba elaichi "
+query = " 3i infotech"
 for x in search(query , num_results=20):
     results.append(x)
 print(results)

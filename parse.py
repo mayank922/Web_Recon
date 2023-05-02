@@ -41,8 +41,8 @@ def browser_handle(url):
     browser.set_cookiejar(cookie_jar)
     page = browser.open(url)
     source_code = page.read()
-    for i in cookie_jar:
-        print("New cookie" + str(i))
+    # for i in cookie_jar:
+    #     print("New cookie" + str(i))
     # print(source_code)
     return source_code
 
