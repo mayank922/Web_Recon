@@ -4,7 +4,7 @@ from nmap import PortScanner
 
 
 # Define target website
-target_website = "192.168.116.137"
+target_website = "192.168.116.133"
 
 # Get IP address of the website
 ip_address = socket.gethostbyname(target_website)
