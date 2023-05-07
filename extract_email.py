@@ -2,7 +2,7 @@ import requests
 import re
 
 # Set the target IP address or domain name
-target = '192.168.116.137'
+target = 'www.3i-infotech.com'
 
 # Send a GET request to the target website
 response = requests.get('http://' + target)

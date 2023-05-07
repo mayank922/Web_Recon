@@ -52,6 +52,6 @@ def main(url, folder_path):
         print(f"Unsupported file type for {url}")
 
 if __name__ == '__main__':
-    url = 'http://192.168.116.137'
+    url = 'https://www.3i-infotech.com'
     folder_path = './images'
     main(url, folder_path)
