@@ -1,0 +1,83 @@
+from bs4 import *
+import requests
+import os
+
+# CREATE FOLDER
+def folder_create(images):
+	try:
+		folder_name = input("Provide the Folder Name that you want the images to download --> ")
+		os.mkdir(folder_name)
+
+	except:
+		print("The entered folder name already exists!")
+		folder_create(images)
+
+	download_images(images, folder_name)
+
+
+# DOWNLOAD ALL PARSED IMAGES
+def download_images(images, folder_name):
+
+	count = 0
+	not_downloaded = []
+
+	print(f"Total {len(images)} Image Found!")
+
+	if len(images) != 0:
+		for i, image in enumerate(images):
+			try:
+				image_link = image["data-srcset"]						# searching for "data-srcset"
+				
+			except:
+				try:
+					image_link = image["data-src"]						# searching for "data-src"
+				
+				except:
+					try:
+						image_link = image["data-fallback-src"]			# searching for "data-fallback-src"
+					
+					except:
+						try:
+							image_link = image["src"]					# searching for "src"
+
+						except:
+							pass										# if no Source URL found
+
+			try:
+				response = requests.get(image_link).content
+				try:
+					response = str(response, 'utf-8')					# decoding the response
+
+				except UnicodeDecodeError:
+					with open(f"{folder_name}/images{i+1}.jpg", "wb+") as f:
+						f.write(response)
+
+					count += 1
+			
+			except:
+				not_downloaded.append(image_link)
+				pass
+
+		if count == len(images):
+			print("All Images Downloaded!")
+			print(not_downloaded)
+			
+		else:
+			print(f"Total {count} Images Downloaded Out of {len(images)}")
+			print(not_downloaded)
+
+# MAIN FUNCTION START
+def main(url):
+	response = requests.get(url)								# Get all URL contents
+	soup = BeautifulSoup(response.text, 'html.parser')			# Parse the HTML code
+	images = soup.findAll('img')								# Look for all the images present in the URL	
+
+	# Call folder create function
+	folder_create(images)
+
+
+# take url
+# url = input("Enter URL:- ")
+url = 'https://www.servetel.in/'
+# CALL MAIN FUNCTION
+main(url)
