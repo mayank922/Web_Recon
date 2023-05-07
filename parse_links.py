@@ -8,7 +8,7 @@ import re
 def p_links(url):
     anon = parse.browser_handle(url)
     try:
-        print('\n[+] Printing Links and emails From BeautifulSoup.')
+        print('\n[+] Printing Links')
         soup = BeautifulSoup(anon, 'html.parser')
         links = [link.get('href') for link in soup.find_all('a', href=True)]
         print(*links, sep='\n')
