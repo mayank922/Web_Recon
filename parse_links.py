@@ -19,5 +19,5 @@ def p_links(url):
 
 
 url = 'https://www.3i-infotech.com'
-p_links(url)
+
 
