@@ -1,5 +1,6 @@
 import requests
 import re
+import spoof_req
 
 # Set the target IP address or domain name
 target = 'www.3i-infotech.com'

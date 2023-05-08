@@ -1,20 +1,21 @@
 import requests
 from googlesearch import search
-import parse
+import spoof_req
 from bs4 import BeautifulSoup
-import re
+
 
 results =[]
 query = " 3i infotech"
-for x in search(query , num_results=20):
+for x in search(query , num_results=5):
     results.append(x)
 print(results)
 
 info = []
 for url in results:
     try:
-        response = requests.get(url, timeout=5)
-        soup = BeautifulSoup(response.content, "html.parser")
+        response= spoof_req.browser_handle(url) #respose returned from spoof_req.py
+        print(1)
+        soup = BeautifulSoup(response, "html.parser")
         title = soup.title.string
         description = soup.find('meta', attrs={'name': 'description'})['content']
         info.append({'url': url, 'title': title, 'description': description})
