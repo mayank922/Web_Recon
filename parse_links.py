@@ -1,12 +1,11 @@
-import parse
+import spoof_req
 from bs4 import BeautifulSoup
 import os
 import argparse
-import re
 
-# can try to print emails seperaterly
+
 def p_links(url):
-    anon = parse.browser_handle(url)
+    anon = spoof_req.browser_handle(url) # respose returned from spoof_req.py
     try:
         print('\n[+] Printing Links')
         soup = BeautifulSoup(anon, 'html.parser')
@@ -20,5 +19,5 @@ def p_links(url):
 
 
 url = 'https://www.3i-infotech.com'
-p_links(url)
+
 
