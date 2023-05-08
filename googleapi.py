@@ -6,8 +6,9 @@ from bs4 import BeautifulSoup
 
 def query_search(query):
 
+    number = input(" Specify the number of results you want to display")
     results =[]
-    for x in search(query , num_results=5):
+    for x in search(query , num_results=number):
         results.append(x)
     print(results)
 

@@ -1,7 +1,7 @@
 import argparse
 import parse_links
 import extract_email
-import openports
+#import openports
 import googleapi
 import images_downloader
 from art import *
