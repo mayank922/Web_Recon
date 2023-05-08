@@ -4,7 +4,9 @@ from nmap import PortScanner
 
 
 # Define target website
-# target_website = "192.168.116.133"
+# target_website = "192.168.116.134"
+
+
 
 def scan_port(target_website):
 
@@ -20,19 +22,25 @@ def scan_port(target_website):
     nm = nmap.PortScanner()
 
     # Scan for open ports on the website
-    nm.scan(target_website, arguments='-p 80, -sV')
+    nm.scan(target_website, arguments='-p 1-1000, -sV')
     #print(nm.scan)
 
     # Print out the list of open ports
     open_ports = []
     for port in nm[target_website]['tcp']:
         if nm[target_website]['tcp'][port]['state'] == 'open':
-            open_ports.append(port)
-    print("Open ports:", open_ports)
+            print("Port:", port) 
+            print("Service:", nm[target_website]['tcp'][port]['name'])
+            print("Version:", nm[target_website]['tcp'][port]['version'])
+            print("--------------------")
+    
+    
+    #         open_ports.append(port)
+    # print("Open ports:", open_ports)
 
 
 
-
+# scan_port(target_website)
 
 # import socket
 # import nmap
