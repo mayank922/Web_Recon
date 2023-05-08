@@ -5,7 +5,8 @@ import argparse
 
 
 def p_links(url):
-    anon = spoof_req.browser_handle(url) # respose returned from spoof_req.py
+
+    anon = spoof_req.browser_handle("https://www." +url) # respose returned from spoof_req.py
     try:
         print('\n[+] Printing Links')
         soup = BeautifulSoup(anon, 'html.parser')
@@ -18,6 +19,6 @@ def p_links(url):
 
 
 
-url = 'https://www.3i-infotech.com'
+#url = 'https://www.3i-infotech.com'
 
 

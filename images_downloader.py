@@ -1,7 +1,7 @@
 from bs4 import *
 import requests
 import os
-
+import spoof_req
 # CREATE FOLDER
 def create_dir(parsed_images):
 	try:
@@ -77,8 +77,9 @@ def image_downloader(parsed_images, created_dir):
 
 # MAIN FUNCTION START
 def main(url):
-	response = requests.get(url)								# Get all URL contents
-	soup = BeautifulSoup(response.text, 'html.parser')			# Parse the HTML code
+	#response = requests.get(url)
+	response = spoof_req.browser_handle("http://www." + url)					#Get all URL contents through spoof_req.py
+	soup = BeautifulSoup(str(response), 'html.parser')			# Parse the HTML code
 	parsed_images = soup.findAll('img')							# Look for all the images present in the URL	
 
 	# Call folder create function
@@ -87,6 +88,6 @@ def main(url):
 
 # take url
 # url = input("Enter URL:- ")
-url = 'https://www.servetel.in/'
+#
 # CALL MAIN FUNCTION
-main(url)
+#main("yo.com")

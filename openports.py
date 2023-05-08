@@ -4,29 +4,31 @@ from nmap import PortScanner
 
 
 # Define target website
-target_website = "192.168.116.133"
+# target_website = "192.168.116.133"
 
-# Get IP address of the website
-ip_address = socket.gethostbyname(target_website)
-print("IP address:", ip_address)
+def scan_port(target_website):
 
-# Get domain name from IP address
-domain_name = socket.getfqdn(ip_address)
-print("Domain name:", domain_name)
+    # Get IP address of the website
+    ip_address = socket.gethostbyname(target_website)
+    print("IP address:", ip_address)
 
-# Create an nmap scanner object
-nm = nmap.PortScanner()
+    # Get domain name from IP address
+    domain_name = socket.getfqdn(ip_address)
+    print("Domain name:", domain_name)
 
-# Scan for open ports on the website
-nm.scan(target_website, arguments='-p 80, -sV')
-#print(nm.scan)
+    # Create an nmap scanner object
+    nm = nmap.PortScanner()
 
-# Print out the list of open ports
-open_ports = []
-for port in nm[target_website]['tcp']:
-    if nm[target_website]['tcp'][port]['state'] == 'open':
-        open_ports.append(port)
-print("Open ports:", open_ports)
+    # Scan for open ports on the website
+    nm.scan(target_website, arguments='-p 80, -sV')
+    #print(nm.scan)
+
+    # Print out the list of open ports
+    open_ports = []
+    for port in nm[target_website]['tcp']:
+        if nm[target_website]['tcp'][port]['state'] == 'open':
+            open_ports.append(port)
+    print("Open ports:", open_ports)
 
 
 
