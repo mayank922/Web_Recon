@@ -1,8 +1,6 @@
 import socket
 import nmap
 from nmap import PortScanner
-import builtwith
-import requests
 
 
 # Define target website
@@ -11,7 +9,7 @@ import requests
 
 
 def scan_port(target_website):
-
+    open_ports = []
     # Get IP address of the website
     ip_address = socket.gethostbyname(target_website)
     print("IP address:", ip_address)
@@ -24,29 +22,33 @@ def scan_port(target_website):
     nm = nmap.PortScanner()
 
     # Scan for open ports on the website
-    nm.scan(target_website, arguments='-p 1-1000, -sV')
+    try:
+        nm.scan(target_website, arguments='-p 1-1000, -sV')
+        for port in nm[target_website]['tcp']:
+            if nm[target_website]['tcp'][port]['state'] == 'open':
+                print("Port:", port) 
+                print("Service:", nm[target_website]['tcp'][port]['name'])
+                print("Version:", nm[target_website]['tcp'][port]['version'])
+                print("--------------------")
+
+    except:
+        nm.scan(ip_address, arguments='-p 1-1000, -sV')
+
+        for port in nm[ip_address]['tcp']:
+            if nm[ip_address]['tcp'][port]['state'] == 'open':
+                print("Port:", port) 
+                print("Service:", nm[ip_address]['tcp'][port]['name'])
+                print("Version:", nm[ip_address]['tcp'][port]['version'])
+                print("--------------------")
     #print(nm.scan)
 
     # Print out the list of open ports
-    open_ports = []
-    for port in nm[target_website]['tcp']:
-        if nm[target_website]['tcp'][port]['state'] == 'open':
-            print("Port:", port) 
-            print("Service:", nm[target_website]['tcp'][port]['name'])
-            print("Version:", nm[target_website]['tcp'][port]['version'])
-            print("--------------------")
+    
+    f
     
     
 
-    result = builtwith.builtwith("https://www." + target_website)
-    #options=["font-scripts","tag-managers" ,"photo-galleries" , "javascript-frameworks" ,"widgets","web-frameworks","cms","programming-languages","blogs","marketing-automation"]
-    x= " , ".join(result["web-frameworks"])
-    y =" ".join(result["programming-languages"])
-    print("Programming language used by the webpage -->" + y)
-    print("Web frameworks used by the webpage --> " + x)
-
-    response = requests.get("https://www." + target_website)
-    print("Server used by the webpage --> " + response.headers["server"])
+    
     #         open_ports.append(port)
     # print("Open ports:", open_ports)
 
