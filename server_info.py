@@ -1,7 +1,7 @@
 import builtwith
 import requests
 
-target_website = "3i-infotech.com"
+target_website = "192.168.116.134"
 
 def serverinfo(target_website):
     result = builtwith.builtwith("https://www." + target_website)

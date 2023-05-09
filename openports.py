@@ -44,7 +44,7 @@ def scan_port(target_website):
 
     # Print out the list of open ports
     
-    f
+    
     
     
 
