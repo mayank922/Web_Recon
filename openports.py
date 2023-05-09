@@ -1,6 +1,8 @@
 import socket
 import nmap
 from nmap import PortScanner
+import builtwith
+import requests
 
 
 # Define target website
@@ -35,6 +37,16 @@ def scan_port(target_website):
             print("--------------------")
     
     
+
+    result = builtwith.builtwith("https://www." + target_website)
+    #options=["font-scripts","tag-managers" ,"photo-galleries" , "javascript-frameworks" ,"widgets","web-frameworks","cms","programming-languages","blogs","marketing-automation"]
+    x= " , ".join(result["web-frameworks"])
+    y =" ".join(result["programming-languages"])
+    print("Programming language used by the webpage -->" + y)
+    print("Web frameworks used by the webpage --> " + x)
+
+    response = requests.get("https://www." + target_website)
+    print("Server used by the webpage --> " + response.headers["server"])
     #         open_ports.append(port)
     # print("Open ports:", open_ports)
 
