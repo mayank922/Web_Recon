@@ -1,14 +1,14 @@
 import argparse
 import parse_links
 import extract_email
-#import openports
+import openports
 import googleapi
 import images_downloader
 from art import *
 
 if __name__ == "__main__":
     tprint("Web-Con",font="3d_diognal")
-    parser = argparse.ArgumentParser(description="Wiil be edited")
+    parser = argparse.ArgumentParser(description="Will be edited")
     parser.add_argument("-l" ,required=False, dest="links", help="specify the domain")
     parser.add_argument("-e" ,required=False, dest="emails" ,help="specify the domain" )
     parser.add_argument("-p" ,required=False, dest="port" ,help="specify the domain")
