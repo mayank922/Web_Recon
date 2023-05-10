@@ -1,7 +1,7 @@
 import argparse
 import parse_links
 import extract_email
-#import openports
+import openports
 import googleapi
 import images_downloader
 import server_info
@@ -38,7 +38,6 @@ if __name__ == "__main__":
     if gsearch:
         googleapi.query_search(gsearch)
     
-
     if img:
         images_downloader.main(img)
 

@@ -2,7 +2,8 @@ from bs4 import *
 import requests
 import os
 import spoof_req
-# CREATE FOLDER
+
+# Create Directory
 def create_dir(parsed_images):
 	try:
 		created_dir = input("Provide the Folder Name that you want the images to download --> ")
@@ -14,8 +15,7 @@ def create_dir(parsed_images):
 
 	image_downloader(parsed_images, created_dir)
 
-
-# DOWNLOAD ALL PARSED IMAGES
+# Download all parsed images
 def image_downloader(parsed_images, created_dir):
 
 	count = 0
@@ -75,7 +75,7 @@ def image_downloader(parsed_images, created_dir):
 			for i in not_downloaded:
 				print(i)
 
-# MAIN FUNCTION START
+# Main Function
 def main(url):
 	#response = requests.get(url)
 	response = spoof_req.browser_handle("http://www." + url)					#Get all URL contents through spoof_req.py
