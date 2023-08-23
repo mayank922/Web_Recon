@@ -1,5 +1,5 @@
 # Web_Recon
-![ee](https://github.com/mayank922/Web_Recon/assets/60442308/309f0c1f-97dc-4b94-b833-5507a593acf0)
+![ee](https://github.com/mayank922/Web_Recon/assets/60442308/892d9c5d-d694-4ff2-9fb6-a7f390c265a8)
 
 The Web Recon Tool is a powerful utility for gathering information about a target web application. It provides a range of capabilities to help you understand and analyze your target. The Web_con Tool is a robust utility for investigating web applications. It offers various functions, such as discovering IP addresses and domain names, conducting port scans, analyzing web servers, extracting data from source code, and integrating Google search results. What sets it apart is its anonymity safeguards, including dynamic User-Agent strings, proxy server support, and automatic cookie clearance, ensuring discreet reconnaissance.
 
@@ -26,6 +26,10 @@ Functionalities of the tool include:
 
 - Output
 
-     <img src="https://github.com/mayank922/Web_Recon/assets/60442308/569f7617-d868-4d06-a71b-428ad4743354" width ="600">
+    ![23](https://github.com/mayank922/Web_Recon/assets/60442308/3775625a-5ddd-443b-9642-4ee63b7152a5)
+
+
+
+
 
      
